@@ -14,7 +14,8 @@
 ## 2.已知問題
 <ul>
 <li>購物車bug: amount必定抓取第一筆data，待修</li>
-<li>購物車後台未完成</li>
+<li>購物車用API (kart) 串接DB已完成postman驗證</li>
+<li>購物車前台串接未完成</li>
 
 
 </ul>
