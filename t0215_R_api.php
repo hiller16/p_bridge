@@ -1,13 +1,8 @@
 <?php
-//INPUT: none
-//Output:
-// {"state": true, "message":"會員讀取成功!", "data" : 會員資料}
-// {"state": false, "message":"會員讀取失敗!錯誤代碼或相關訊息"}
-
-    require_once("dbtools.php");
+    require_once("dbtools1.php");
     $link = create_connect();
-    $sql = "SELECT COUNT(UserState) AS num, UserState FROM member GROUP BY UserState";
-    $result = execute_sql($link, "testdb", $sql);
+    $sql = "SELECT count(*) as total_member FROM member";
+    $result = execute_sql($link, "id19728260_maindb", $sql);
     if(mysqli_num_rows($result) > 0){
         $mydata = array();
         while($row = mysqli_fetch_assoc($result)){
