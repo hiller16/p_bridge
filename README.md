@@ -15,6 +15,7 @@
 <ul>
 <li>購物車bug: amount必定抓取第一筆data，待修</li>
 <li>購物車用API (add_list) 串接DB已完成postman驗證</li>
+<img src="https://hiller16.000webhostapp.com/web2/img/001.jpg">
 <li>購物車前台串接未完成</li>
 
 
