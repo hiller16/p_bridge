@@ -63,7 +63,7 @@
         <div class="row">
             <ul class="list-unstyled d-flex justify-content-end">
                 <li class="rounded text-light p-2 bg-primary border-3 m-1">
-                    <a href="#" style="text-decoration:none" class="text-light">
+                    <a href="mailto:hiller16@gmai1.com" style="text-decoration:none" class="text-light">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="input-group-text">購物車</span></a>
                 </li>
@@ -76,7 +76,7 @@
             <div>
                 <a href="https://www.facebook.com/bridgeheadsoup"><i
                         class="fa-brands fa-square-facebook text-primary fs-4"></i></a>
-                <a href="#"><i class="fa-regular fa-envelope text-primary fs-4"></i></a>
+                <a href="mailto:hiller16@gmail.com"><i class="fa-regular fa-envelope text-primary fs-4"></i></a>
             </div>
         </div>
     </section>
@@ -229,7 +229,7 @@
                                 <div class="mb-3">
                                     <label for="email" class="form-label">EMAIL</label>
                                     <input type="email" id="email" name="email" class="form-control"
-                                        placeholder="請輸入email 1-8字">
+                                        placeholder="請輸入email 1-20字">
                                     <div class="form-text" id="err_email">
                                         <div class="valid-feedback">字數符合規則</div>
                                         <div class="invalid-feedback">字數不符合規則</div>
@@ -356,7 +356,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" id="m_update_btn">確認更新</button>
+                    <button type="button" class="btn btn-primary" id="kart_btn">確認更新</button>
                 </div>
             </div>
         </div>
@@ -375,6 +375,7 @@
             data() {
                 return {
                     text: '加入購物車',
+                    
                 }
             },
         };
@@ -611,11 +612,10 @@
 
             //針對add_list按鈕做監聽
             
-            $("#menu #add_list_btn").bind("click", function () {
+            $("#add_list_btn").bind("click", function () {
 
-                console.log($(this).data("food_gb5"));
-                var jsonData = {}; //沒設{}的話會導致Uncaught TypeError
-                //jsonData["food_no"] = food_no; //調用共用變數 id
+                //沒設{}的話會導致Uncaught TypeError
+                var jsonData = {}; 
                 jsonData["food_no_amount"] = $("#food_no_amount").val();
                 jsonData["food_no"] = $(this).data("food_no");
                 jsonData["food_gb5"] = $(this).data("food_gb5");
@@ -623,19 +623,24 @@
                 jsonData["food_total"] = $(this).data("food_price")*$("#food_no_amount").val();
 
                 console.log(JSON.stringify(jsonData));
+                
 
-                // food_no = $(this).data("food_no");
-                // food_gb5 = $(this).data("food_gb5");
-                // food_price = $(this).data("food_price");
+               // {"food_no_amount":"1","food_no":35,"food_gb5":"香腸","food_price":20,"food_total":20}
 
-                // $("#food_gb5").val(food_gb5);
-                // $("#food_price").val(food_price);
-
-
-                // $("#show_mydata").append("<h3>"+$(this).data("food_no")+"</h3>")
-                // $("#show_mydata").append("<h3>"+$(this).data("food_gb5")+"</h3>")
+               $.ajax({
+                        type: "POST",
+                        url: "add_list_api.php",
+                        dataType: "json",
+                        data: JSON.stringify(jsonDATA),
+                        contentType: "application/json;chartset=utf-8",
+                        
+                        error: function(){
+                            alert("add_list_api.php");
+                        }
+                    });               
 
             });
+
             
 
         });

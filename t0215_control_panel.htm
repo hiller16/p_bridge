@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數據報表</title>
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+
+<body>
+    <!-- <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav> -->
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 mt-3">
+                <div class="card h-100">
+                    <div class="card-body d-flex align-items-center w-100">
+                        <i class="fa-solid fa-person fa-4x"></i>
+                        <div>
+                            <div class="fs-5">橋頭豬血湯會員總數</div>
+                            <div class="fs-2" id="total_member">10000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-4 mt-2">
+                <div class="card h-100">
+                    <div class="card-body fs-3">會員居住地分析A</div>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="col-4  mt-2">
+                <div class="card h-100">
+                    <div class="card-body fs-3">會員居住地分析B</div>
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+            <div class="col-4  mt-2">
+                <div class="card h-100">
+                    <div class="card-body fs-3">會員居住地分析C</div>
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let mychart;
+        let mychart2;
+        let mychart3;
+
+        const ctx = document.getElementById('myChart');
+        mychart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [],//x軸
+                datasets: [{
+                    label: '居住地人數', //y軸的參數名稱
+                    data: [],//y軸度量
+                    backgroundColor: [
+                        'rgba(255, 99, 132,0.5)',
+                        'rgba(54, 162, 235,0.5)',
+                        'rgba(255, 205, 86,0.5)',
+                        'rgba(255, 105, 86,0.5)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        // mychart.data.labels.push("XX市");
+        // mychart.data.datasets[0].data.push(100); //push陣列第0筆，內容100
+        // mychart.update();
+
+
+        const cty = document.getElementById('myChart2');
+        mychart2 = new Chart(cty, {
+            type: 'pie',
+            data: {
+                labels: [],//x軸
+                datasets: [{
+                    label: '居住地人數', //y軸的參數名稱
+                    data: [],//y軸度量
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgba(255, 105, 86)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: '居住地人數'
+                    }
+                }
+            },
+        });
+
+        const ctz = document.getElementById('myChart3');
+        mychart3 = new Chart(ctz, {
+            type: 'line',
+            data: {
+                labels: [],//x軸
+                datasets: [{
+                    label: '居住地人數', //y軸的參數名稱
+                    data: [],//y軸度量
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(255, 105, 86)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "t0215_R_api.php",
+                dataType: "json",
+                success: showdata_total_member,
+                error: function () {
+                    alert("error connecting: t0215_R_api.php");
+                }
+            });
+        })
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "t0215_R_count_state_api.php",
+                dataType: "json",
+                success: showdata_count_state,
+                error: function () {
+                    alert("error connecting: t0215_R_count_state_api.php");
+                }
+            });
+        })
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "t0215_R_count_city_api.php",
+                dataType: "json",
+                success: showdata_count_city,
+                error: function () {
+                    alert("error connecting: t0215_R_count_city_api.php");
+                }
+            });
+        })
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "t0215_R_count_city_api.php",
+                dataType: "json",
+                success: showdata_count_city2,
+                error: function () {
+                    alert("error connecting: t0215_R_count_city_api.php");
+                }
+            });
+        })
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "t0215_R_count_city_api.php",
+                dataType: "json",
+                success: showdata_count_city3,
+                error: function () {
+                    alert("error connecting: t0215_R_count_city_api.php");
+                }
+            });
+        })
+
+        function showdata_total_member(data) {
+            console.log(data);
+            console.log(data.data[0].total_member);
+            $("#total_member").text(data.data[0].total_member);
+
+        }
+        function showdata_count_state(data) {
+            console.log(data);
+             //console.log(data.data[0].num);
+             //console.log(data.data[1].num);
+            //json格式為{"state": true, "message":"會員總數統計成功!", "data" : [{"num":"4","UserState":"1"},{"num":"1","UserState":"0"}]} 1就是true有4筆，0有1筆
+
+            // 判斷是否啟用人數:0 或 停權人數:0
+
+            if (data.data.length == 1) {
+                if (data.data[0].UserState != undefined && data.data[0].UserState == 'n') {
+                    $("#userState_1").text(0);
+                    $("#userState_0").text(data.data[0].num);
+                } else {
+                    $("#userState_1").text(data.data[0].num);
+                    $("#userState_0").text(0);
+                }
+            } else {
+                $("#userState_1").text(data.data[0].num);
+                $("#userState_0").text(data.data[1].num);
+            }
+
+        }
+
+        function showdata_count_city(data) {
+            console.log(data);
+            console.log(data.data[0].City);
+            console.log(data.data[0].num);
+            //json格式為{"state": true, "message":"會員總數統計成功!", "data" : [{"num":"2","City":"\u53f0\u5317\u5e02"},{"num":"2","City":"\u53f0\u4e2d\u5e02"},{"num":"1","City":"\u53f0\u5357\u5e02"}]}
+            data.data.forEach(function (item) {
+                console.log(item.City + item.num); // 叫出cityname跟數目；json格式為 0: {num: '2', City: '台北市'} 
+                mychart.data.labels.push(item.City);
+                mychart.data.datasets[0].data.push(item.num);
+
+            });
+            mychart.update();
+        }
+
+        function showdata_count_city2(data) {
+            console.log(data);
+            console.log(data.data[0].City);
+            console.log(data.data[0].num);
+
+            data.data.forEach(function (item) {
+                console.log(item.City + item.num);
+                mychart2.data.labels.push(item.City);
+                mychart2.data.datasets[0].data.push(item.num);
+            });
+            mychart2.update();
+        }
+
+        function showdata_count_city3(data) {
+            console.log(data);
+            console.log(data.data[0].City);
+            console.log(data.data[0].num);
+
+            data.data.forEach(function (item) {
+                console.log(item.City + item.num);
+                mychart3.data.labels.push(item.City);
+                mychart3.data.datasets[0].data.push(item.num);
+            });
+            mychart3.update();
+        }
+
+
+    </script>
+</body>
+
+</html>
