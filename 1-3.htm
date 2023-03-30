@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-3 營業表單: 新增品項</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+<body>
+
+
+    <div class="container mt-4">
+        <h2 class="text-center">永康橋頭豬血湯後台</h2><br>
+        
+        <h3 class="text-center">1-3 營業表單: 新增品項</h3>
+        <div class="row">
+            <div class="col-md-6 offset-md-3"> <!-- offset以拉到中間 -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="food_gb5">品項中文名稱</label>
+                            <input type="text" class="form-control" id="food_gb5" name="food_gb5" placeholder="字數1-10">
+                            <div class="form-text" id="err_food_gb5"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="food_eng">品項英文名稱</label>
+                            <input type="text" class="form-control" id="food_eng" name="food_eng" placeholder="字數1-25">
+                            <div class="form-text" id="err_food_eng"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="food_describe">品項說明</label>
+                            <input type="text" class="form-control" id="food_describe" name="food_describe" placeholder="字數1-50">
+                            <div class="form-text" id="err_food_describe"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="food_group">分類名稱</label>
+                            <input type="text" class="form-control" id="food_group" name="food_group" placeholder="餐點名稱字數1-10">
+                            <div class="form-text" id="err_food_group"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="food_price">價格</label>
+                            <input type="number" min="1" max="5000" class="form-control" id="food_price" name="food_price" placeholder="0-5000">
+                            <div class="form-text" id="err_food_price"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tag_promo">促銷</label>
+                            <input type="number" min=0 max=1 class="form-control" id="tag_promo" name="tag_promo" placeholder="0-1">
+                            <div class="form-text" id="err_tag_promo"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tag_recmn">推薦</label>
+                            <input type="number" min=0 max=1 class="form-control" id="tag_recmn" name="tag_recmn" placeholder="0-1">
+                            <div class="form-text" id="err_tag_recmn"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="food_pic">圖片URL</label>
+                            <input type="text" class="form-control" id="food_pic" name="food_pic" placeholder="字數4-200">
+                            <div class="form-text" id="err_food_pic"></div>
+                        </div>
+
+
+                        <div class="text-center">
+                            <a href="#" class="btn btn-outline-secondary">取消</a>
+                            <a href="#" class="btn btn-outline-success" id="ok_btn">確認</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script>
+        var flag_food_gb5 =false;
+        var flag_food_eng =false;
+        var flag_food_describe =false;
+        var flag_food_group =false;
+        var flag_food_price =false;
+        var flag_food_describe =false;
+        var flag_tag_promo =false;
+        var flag_tag_recmn =false;
+        var flag_food_pic =false;
+
+        $(function () {
+                $("#food_gb5").bind("input propertychange", function () {
+                    if ($(this).val().length > 0 && $(this).val().length < 11) {
+
+                        $("#err_food_gb5").html("字數符合規則!");
+                        $("#err_food_gb5").css("color", "green");
+                        flag_food_gb5 = true;
+                    } else {
+                        $("#err_food_gb5").html("字數不符合規則!");
+                        $("#err_food_gb5").css("color", "red");
+                        flag_food_gb5 = false;
+                    }
+                });
+                $("#food_eng").bind("input propertychange", function () {
+                    if ($(this).val().length > 0 && $(this).val().length < 26) {
+
+                        $("#err_food_eng").html("字數符合規則!");
+                        $("#err_food_eng").css("color", "green");
+                        flag_food_eng = true;
+                    } else {
+                        $("#err_food_eng").html("字數不符合規則!");
+                        $("#err_food_eng").css("color", "red");
+                        flag_food_eng = false;
+                    }
+                });
+
+                $("#food_describe").bind("input propertychange", function () {
+                    if ($(this).val().length > 0 && $(this).val().length < 51) {
+
+                        $("#err_food_describe").html("字數符合規則!");
+                        $("#err_food_describe").css("color", "green");
+                        flag_food_describe = true;
+                    } else {
+                        $("#err_food_describe").html("字數不符合規則!");
+                        $("#err_food_describe").css("color", "red");
+                        flag_food_describe = false;
+                    }
+                });
+                $("#food_group").bind("input propertychange", function () {
+                    if ($(this).val().length > 0 && $(this).val().length < 11) {
+
+                        $("#err_food_group").html("字數符合規則!");
+                        $("#err_food_group").css("color", "green");
+                        flag_food_group = true;
+                    } else {
+                        $("#err_food_group").html("字數不符合規則!");
+                        $("#err_food_group").css("color", "red");
+                        flag_food_group = false;
+                    }
+                });
+
+                $("#food_price").bind("input propertychange", function () {
+                    if ($(this).val() >= 0 && $(this).val() < 5001) {
+
+                        $("#err_food_price").html("價格符合規則!");
+                        $("#err_food_price").css("color", "green");
+                        flag_food_price = true;
+                    } else {
+                        $("#err_food_price").html("價格不符合規則!");
+                        $("#err_food_price").css("color", "red");
+                        flag_food_price = false;
+                    }
+                });
+
+                
+                $("#tag_promo").bind("input propertychange", function () {
+                    if ($(this).val() >= 0 && $(this).val() < 2) {
+
+                        $("#err_tag_promo").html("符合規則!");
+                        $("#err_tag_promo").css("color", "green");
+                        flag_tag_promo = true;
+                    } else {
+                        $("#err_tag_promo").html("不符合規則!");
+                        $("#err_tag_promo").css("color", "red");
+                        flag_tag_promo = false;
+                    }
+                });
+
+                $("#tag_recmn").bind("input propertychange", function () {
+                    if ($(this).val() >= 0 && $(this).val() < 2) {
+
+                        $("#err_tag_recmn").html("符合規則!");
+                        $("#err_tag_recmn").css("color", "green");
+                        flag_tag_recmn = true;
+                    } else {
+                        $("#err_tag_recmn").html("不符合規則!");
+                        $("#err_tag_recmn").css("color", "red");
+                        flag_tag_recmn = false;
+                    }
+                });
+
+                $("#food_pic").bind("input propertychange", function () {
+                    if ($(this).val().length > 5 && $(this).val().length < 201) {
+
+                        $("#err_food_pic").html("字數符合規則!");
+                        $("#err_food_pic").css("color", "green");
+                        flag_food_pic = true;
+                    } else {
+                        $("#err_food_pic").html("字數不符合規則!");
+                        $("#err_food_pic").css("color", "red");
+                        flag_food_pic = false;
+                    }
+                });
+
+                $("#ok_btn").bind("click", function () {
+                    if (flag_food_gb5 && flag_food_eng && flag_food_describe && flag_food_group && flag_food_price && flag_tag_promo && flag_tag_recmn && flag_food_pic) {
+                        console.log("ok");
+                        var jsonDATA = {};
+                        jsonDATA["food_gb5"] = $("#food_gb5").val();
+                        jsonDATA["food_eng"] = $("#food_eng").val();
+                        jsonDATA["food_describe"] = $("#food_describe").val();
+                        jsonDATA["food_group"] = $("#food_group").val();
+                        jsonDATA["food_price"] = $("#food_price").val();
+                        jsonDATA["tag_promo"] = $("#tag_promo").val();
+                        jsonDATA["tag_recmn"] = $("#tag_recmn").val();
+                        jsonDATA["food_pic"] = $("#food_pic").val();
+
+                        console.log(JSON.stringify(jsonDATA));
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "menu_C_api.php",
+                        dataType: "json",
+                        data: JSON.stringify(jsonDATA),
+                        contentType: "application/json;chartset=utf-8",
+                        success: showdata,
+                        error: function(){
+                            alert("error: menu_C_api.php");
+                        }
+                    });
+                }else{
+                    alert("欄位有錯誤,請修正後送出!");
+                }
+            })
+        });
+
+        function showdata(data){
+            console.log(data);
+            if(data.state){
+                alert(data.message);
+                $("#food_gb5").val("");
+                $("#food_eng").val("");
+                $("#food_describe").val("");
+                $("#food_group").val("");
+                $("#food_price").val("");
+                $("#tag_promo").val("");
+                $("#tag_recmn").val("");
+                $("#food_pic").val("");
+
+            }else{
+                alert(data.message);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+
+

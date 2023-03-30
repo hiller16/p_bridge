@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台南公車站牌地圖</title>
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+
+    <style>
+        #listData {
+            height: 80vh;
+            overflow: scroll;
+        }
+
+        .marker-cluster-small {
+            background-color: rgba(72, 188, 235, 0.5);
+            border: 1px solid var(--mycolor10);
+            text-align: center;
+            border-radius: 50%;
+        }
+
+
+        .marker-cluster-medium {
+            background-color: rgba(231, 129, 62, 0.8);
+            border: 2px solid var(--mycolor10);
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        #listData .list-group-item:hover {
+            background-color: rgba(0, 162, 255, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 bg-warning vh-100 text-center">
+                <div>
+                    <span id="login_member" class="fs-5"></span>
+                    <button class="btn btn-danger" type="button" id="logout_btn" style="display: none;">登出</button>
+                </div>
+
+
+                <p class="fs-2 mytext06">大台南公車站地圖</p>
+                <p class="fs-6 mytext06">請點擊下方或右方地圖上標籤來對照站牌位置資訊</p>
+
+                <ul class="list-group" id="listData">
+                    <li class="list-group-item">
+                        <div class="fs-4 fw-500"> {站牌編號}</div>
+                        <div class="fs-4 fw-500"> {站牌中文名稱}</div>
+                        <div class="fs-6 fw-500"> {站牌英文名稱}</div>
+                        <div class="fs-4 fw-500"> {站牌地址}</div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-md-9 bg-dark">
+                <div class="container-fluid">
+                    <div class="vh-100" id="map"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/check_member_state.js"></script>
+    <script src="js/CityCountyData2.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <script src="js/leaflet.markercluster.js"></script>
+    <script src="js/leaflet-color-markers.js"></script>
+    <script src="js/Tainan.json"></script>
+
+
+    <script>
+        var map;
+        var stopData;
+
+
+        $(function () {
+            //確認會員使用狀態
+            check_member_state();
+
+            //叫出地圖
+            map = L.map('map').setView([23.0455516, 120.2420099], 16);
+
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // 使用markerClusterGroup: 宣告一個markers為新的Leaflet.markerclustergroup
+
+
+            var markers = new L.markerClusterGroup().addTo(map);
+
+
+            //var strHTML02 = '<div class="card"><div class="card-body"><div class="fs-5">橋頭豬血湯</div><div class="fs-6">地址: 710台南市永康區永安路177號</div><div class="fs-6">電話: 0986-089397</div></div></div>';
+
+            //var marker=L.marker([23.0455516, 120.2420099]).addTo(map).bindPopup(strHTML02);
+
+            var popup = L.popup()
+                .setLatLng([23.0455516, 120.2420099])
+                .setContent("永康橋頭豬血湯 <br>地址: 710台南市永康區永安路177號 <br>電話: 0986-089397")
+                .openOn(map);
+
+
+
+            //載入站牌資料
+            $.ajax({
+                type: "GET",
+                url: "https://ptx.transportdata.tw/MOTC/v2/Bus/Stop/City/Tainan?$format=JSON",
+                //url: "js/Tainan.json",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    stopData = data;
+                    //console.log(data);
+                },
+                error: function () {
+                    alert("error:https://ptx.transportdata.tw/MOTC/v2/Bus/Stop/City/Tainan?$format=JSON");
+                }
+            });
+
+
+
+            $("#listData").empty();
+            removeMarker();
+
+            //渲染list-group資料，注意!不管json長怎樣，data-變數名稱都要小寫)
+
+            stopData.forEach(function (item, index) {
+                var strHTML = '<li class="list-group-item" data-stopid="' + item.StopID + '" data-stopname1="' + item.StopName.Zh_tw + '" data-stopname2="' + item.StopName.En + '" data-stopaddress="' + item.StopAddress + '"data-lat="' + item.StopPosition.PositionLat + '" data-lng="' + item.StopPosition.PositionLon + '"><div class="fs-6 text-secondary mytext04"> ' + item.StopID + '</div><div class="fs-4 mytext06"> ' + item.StopName.Zh_tw + '</div><div class="fs-6 mytext06"> ' + item.StopName.En + '</div><div class="fs-5 mytext04"> ' + item.StopAddress + '</div></li>';
+
+                $("#listData").append(strHTML);
+
+                //console.log(item.StopPosition.PositionLat);
+                //console.log(item.StopPosition.PositionLon);
+                var lat = item.StopPosition.PositionLat;
+                var lng = item.StopPosition.PositionLon;
+
+                var strHTML01 = '<div class="card"><div class="card-header fs-5 text-bg-primary">' + item.StopName.Zh_tw + '<br>' + item.StopName.En + '</div><div class="card-body"><div class="fs-6">公車站ID: ' + item.StopID + '</div><div class="fs-5">地址:' + item.StopAddress + '</div></div>';
+
+
+                //指標框 popup (全部都出來)
+                //L.marker([lat, lng]).addTo(map).bindPopup(strHTML01);           
+                //指標框 popup
+
+                // markers.addLayer(L.marker([lat, lng], { icon: greenIcon }).bindPopup(strHTML01));
+
+                markers.addLayer(L.marker([lat, lng]).bindPopup(strHTML01));
+
+                //console.log(key);
+                //如果有第一筆索引值則map.flyto
+                // if (index == 0) {
+
+                //     //map.panTo([lat, lng]);
+                //     map.flyTo([23.0455516, 120.2420099]);
+                // }
+
+            });
+
+            //click監聽list-group-item 觸發marker popup 事件
+            $("#listData .list-group-item").click(function () {
+
+                console.log($(this).data("stopid"));
+                //必須小寫!
+                markerPopup($(this).data("stopname1"), $(this).data("stopname2"), $(this).data("stopid"), $(this).data("stopaddress"), $(this).data("lat"), $(this).data("lng"));
+            });
+
+        });
+
+
+
+        //清除marker的layer
+        //呼叫eachLayer，若包含(instance) marker則remove  each layer。注意"L.Marker"大小寫。
+        function removeMarker() {
+            map.eachLayer(function (layer) {
+
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer)
+                }
+            });
+        }
+
+        //自訂義功能markerPopup來傳參數
+        function markerPopup(StopName1, StopName2, StopID, StopAddress, Lat, Lng) {
+            console.log(StopName1 + StopName2 + StopID + StopAddress + Lat + Lng);
+
+            var popupHTML = '<div class="card"><div class="card-header fs-5 text-bg-primary">' + StopName1 + '<br>' + StopName2 + '</div><div class="card-body"><div class="fs-6">公車站ID: ' + StopID + '</div><div class="fs-5">地址:' + StopAddress + '</div></div>';
+
+            L.marker([Lat, Lng]).addTo(map).bindPopup(popupHTML).openPopup();
+        }
+
+    </script>
+
+
+</body>
+
+
+</html>

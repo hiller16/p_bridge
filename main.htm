@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>橋頭豬血湯網路購物</title>
+
+    <style>
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-weight: 500;
+            background-color: var(--mycolor06);
+        }
+
+        @media screen and (max-width: 768px) {
+            .s05-text {
+                background-color: rgba(0, 0, 0, 0.3);
+                margin-top: 15px;
+                margin-bottom: 15px;
+                padding: 15px;
+                color: var(--mycolor00)
+            }
+
+            .s09-text {
+                background-color: rgba(0, 0, 0, 0.3);
+                margin: 15px;
+                color: var(--mycolor00)
+            }
+
+            .s05-img {
+                right: 0px;
+            }
+
+            .s07-img {
+                left: 0px;
+            }
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: none
+        }
+    </style>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/all.min.css"> <!-- Font Awesome -->
+
+</head>
+
+<body class="bg-light" id="app">
+    <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+    <!-- 購物車 -->
+    <!-- <div class="fixed-top">
+        <div class="row">
+            <ul class="list-unstyled d-flex justify-content-end">
+                <li class="rounded text-light p-2 bg-primary border-3 m-1">
+                    <a href="#" style="text-decoration:none" class="text-light">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="input-group-text">購物車</span></a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+    <!----01-->
+    <section class="bg-dark">
+        <div class="container">
+            <div>
+                <a href="https://www.facebook.com/bridgeheadsoup"><i
+                        class="fa-brands fa-square-facebook text-primary fs-4"></i></a>
+                <a href="#"><i class="fa-regular fa-envelope text-primary fs-4"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!----02-->
+    <section class="bg-dark">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark">
+                <div class="container-fluid text-start">
+                    <a class="navbar-brand" href="#">
+                        <i class="fa-solid fa-piggy-bank"></i> <!--icon-->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">首頁</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" href="#">購物車</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">關於我們</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">地址所在</a></li>
+                                    <li><a class="dropdown-item" href="#">徵才消息</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">老闆專區</a>
+                                <ul class="dropdown-menu">
+
+                                    <li><a target="_blank" class="dropdown-item" href="1-1.htm" style="display: none;"
+                                            id="backend01_btn">1-1營業表單: 區間訂單查詢</a></li>
+                                    <li><a target="_blank" class="dropdown-item" href="1-1-1.htm" style="display: none;"
+                                            id="backend01_btn">1-1-1查詢訂單結果</a></li>
+                                    <li><a target="_blank" class="dropdown-item" href="1-2.htm" style="display: none;"
+                                            id="backend02_btn">1-2 營業表單: 新增/修改網路購物品項</a></li>
+                                    <li><a target="_blank" class="dropdown-item" href="1-3.htm" style="display: none;"
+                                            id="backend03_btn">1-3 營業表單: 新增/修改店內菜單品項</a></li>
+                                    <li><a target="_blank" class="dropdown-item" href="tn_map.htm"
+                                            style="display: none;" id="backend04_btn">台南公車站牌地圖</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class=" text-warning fs-5">台南在地美食</div>
+                        <div class=" text-light fs-2">永康橋頭豬血湯</div>
+                        <form class="d-flex" role="search">
+                            <!-- 塞入一個會員帳號相關訊息格 login_member -->
+                            <span class="text-warning fw-700 fs-6 m-2" id="login_member"></span>
+
+                            <button class="btn btn-outline-primary me-2 wow animate__bounce" data-wow-duration="3s"
+                                data-wow-delay="1s" data-wow-iteration="1" type="button" data-bs-toggle="modal"
+                                data-bs-target="#loginModal" id="s2_login_btn">登入</button>
+                            <button class="btn btn-primary me-2" type="button" data-bs-toggle="modal"
+                                data-bs-target="#registermodal" id="s2_reg_btn">註冊</button>
+                            <!--data-wow-iteration="infinite" 使"跳不停"-->
+                            <button class="btn btn-danger" type="button" id="logout_btn"
+                                style="display: none;">登出</button>
+                        </form>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+        <!--loginModal。tabindex: 套WCAG，使欄位成為焦點-->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h1 class="modal-title fs-5 text-white " id="exampleModalLabel">會員登入</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="login_username" class="form-label">帳號</label>
+                            <input type="text" id="login_username" name="login_username" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="login_password" class="form-label">密碼</label>
+                            <input type="password" id="login_password" name="login_password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="me-auto" data-bs-toggle="modal" data-bs-target="#registerModal">註冊帳號</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="login_btn" data-bs-dismiss="modal">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--registermodal-->
+        <div class="modal fade" id="registermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl"> <!-- 使size變最大(XL)1440 -->
+                <div class="modal-content">
+                    <div class="modal-header bg-warning">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">會員註冊</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="fs-2">
+                                    會員守則
+                                </div>
+
+                                <div class="fs-5">專題特點一塊首先以及更新時間成就的說咱們招生處於樂隊，裝置工商抱著說著，小說有效，後悔轎車，參數你。</div>
+                                <div class="fs-5">專題特點一塊首先以及更新時間成就的說咱們招生處於樂隊，裝置工商抱著說著。</div>
+                                <div class="fs-5">專題特點一塊首先以及更新時間成就的說咱們招生處於樂隊，裝置工商抱著說著，小說有效。</div>
+                                <div class="fs-5">專題特點一塊首先以及更新時間成就的說咱們招生處於樂隊，裝置工商抱著說著，小說有效，後悔轎車，</div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="mem_check01" name="mem_check01" class="form-check-input"
+                                        value="true">
+                                    <label for="mem_check01" class="form-check-label">同意遵守</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="reg_username" class="form-label">帳號</label>
+                                    <input type="text" id="reg_username" name="reg_username" class="form-control"
+                                        placeholder="帳號 1-8字" required>
+                                    <div class="form-text" id="err_reg_username"></div>
+                                    <div class="valid-feedback" id="reg_valid-feedback">字數符合規則</div>
+                                    <div class="invalid-feedback" id="reg_invalid-feedback">字數不符合規則!</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reg_password" class="form-label">密碼</label>
+                                    <input type="password" id="reg_password" name="reg_password" class="form-control"
+                                        placeholder="密碼1-8字" required>
+                                    <div class="form-text" id="err_reg_password"></div>
+                                    <div class="valid-feedback" id="">密碼輸入正確!</div>
+                                    <div class="invalid-feedback">密碼輸入錯誤!</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="reg_re_password" class="form-label">確認密碼</label>
+                                    <input type="password" id="reg_re_password" name="reg_re_password"
+                                        class="form-control">
+                                    <div class="form-text" id="err_reg_re_password"></div>
+                                    <div class="valid-feedback">密碼一致</div>
+                                    <div class="invalid-feedback">密碼不一致</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">EMAIL</label>
+                                    <input type="email" id="email" name="email" class="form-control"
+                                        placeholder="請輸入email 1-8字">
+                                    <div class="form-text" id="err_email">
+                                        <div class="valid-feedback">字數符合規則</div>
+                                        <div class="invalid-feedback">字數不符合規則</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tel" class="form-label">連絡電話</label>
+                                    <input type="tel" id="tel" name="tel" class="form-control" placeholder="請輸入電話號碼">
+                                    <div class="form-text" id="err_tel">
+                                        <div class="valid-feedback">字數符合規則</div>
+                                        <div class="invalid-feedback">字數不符合規則</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="me-auto" data-bs-toggle="modal" data-bs-target="#loginModal">已經有帳號?</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="reg_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!----03-->
+    <section>
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active"
+                    aria-current="true" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="active"
+                    aria-current="true" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+
+                <div class="carousel-item active bg-cover"
+                    style="background-image: url(img/food_01.jpg); height: 400px">
+                    <div class="rounded carousel-caption d-none d-md-block">
+                        <h5>道地台南美食:海產粥</h5>
+                        <p>女朋友幫忙依法你說，唱片放棄小遊戲學者名單基本上興奮目光本公司挑戰出處研發，晶片進來，點這裡下載下。</p>
+                    </div>
+                </div>
+                <div class="carousel-item active bg-cover"
+                    style="background-image: url(img/food_03.jpg); height: 400px">
+                    <div class="rounded carousel-caption d-none d-md-block">
+                        <h5>挑戰登峰味蕾:控肉飯</h5>
+                        <p>女朋友幫忙依法你說，唱片放棄小遊戲學者名單基本上興奮目光本公司挑戰出處研發，晶片進來，點這裡下載下。</p>
+                    </div>
+                </div>
+                <div class="carousel-item active bg-cover"
+                    style="background-image: url(img/food_13.jpg); height: 400px">
+                    <div class="rounded carousel-caption d-none d-md-block">
+                        <h5>美味平民小吃:肉燥飯</h5>
+                        <p>女朋友幫忙依法你說，唱片放棄小遊戲學者名單基本上興奮目光本公司挑戰出處研發，晶片進來，點這裡下載下。</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+    </section>
+    <!----04-->
+    <section class="bg-dark">
+        <div class="container-fluid">
+            <div>
+                <p class="text-light
+                text-center fs-4 ">歡迎來到橋頭豬血湯，以下為我們的商品清單，祝您購物愉快。 &nbsp;&nbsp;&nbsp;<i
+                        class="fa-regular fa-thumbs-up"></i>店長推薦 / <i class="fa-solid fa-tags"></i> 折扣中</p>
+            </div>
+            <div class="card-group col-12">
+                <div class="row" id="menu">
+                    <div class="card col-3 p-2">
+                        <img src="" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <div class="card-title fs-4">food_gb5 tag_recmn tag_promo</div>
+                            <p class="fs-6">food_eng</p>
+                            <p class="card-text fs-3">特價: food_price</p>
+                            <label for="product001" class="mt-1">數量</label>
+                            <input type="number" id="food_no_amount" class="form-control" placeholder="購買數量">
+                            <div class="form-text mb-3" id="err_product001">food_remark
+                            </div>
+                            <div class="text-end mt-1"><button type="submit" class="btn btn-primary">更新</button></div>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">food_describe</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- add_cart -->
+    <div class="modal fade" id="add_list" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{text}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 fs-6"  id="show_mydata">
+                        JSON內容
+                    </div>
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="m_update_btn">確認更新</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/vue.global.js"></script>
+
+    <script>
+                var App = {
+            data() {
+                return {
+                    text: '加入購物車',
+                }
+            },
+        };
+        Vue.createApp(App).mount('#app');
+
+        new WOW().init(); //使wow特效生效
+
+        var food_no; //使不同function皆可調用
+
+        var flag_check01 = false;
+        var flag_username = false;
+        var flag_password = false;
+        var flag_repassword = false;
+        var flag_email = false;
+        var flag_tel = false;
+
+        $.ajax({
+            type: "GET",
+            url: "menu_R_api.php",
+            dataType: "json",
+            async: false,  //先有資料再有畫面
+            success: showdata,
+            error: function () {
+                alert("error:menu_R_api.php");
+            }
+        });
+        $(function () {
+            //利用cookie 判斷登入狀態
+            if (getCookie("UID01") != "" && getCookie("UID02") != "") {
+                //傳遞到後端驗證UID
+                var jsonData = {};
+                jsonData["uid01"] = getCookie("UID01");
+                jsonData["uid02"] = getCookie("UID02");
+                console.log(JSON.stringify(jsonData));
+
+                $.ajax({
+                    type: "POST",
+                    url: "mem_uid_check1_api.php",
+                    data: JSON.stringify(jsonData),
+                    dataType: "json",
+                    success: showdata_uid_check,
+                    error: function () {
+                        alert("error:mem_uid_check1_api.php")
+                    }
+                });
+            }
+            //登出按鈕監聽
+
+            $("#logout_btn").bind("click", function () {
+                //原理為將cookie值清空，reload後因對不上而失效
+                setCookie("UID01", "", 7);
+                setCookie("UID02", "", 7);
+                location.href = "main.htm";
+            });
+
+            //登入按鈕監聽
+            $("#login_btn").bind("click", function () {
+                console.log("login_btn_ok");
+
+                var jsonData = {};
+                jsonData["username"] = $("#login_username").val();
+                jsonData["password"] = $("#login_password").val();
+
+                console.log(JSON.stringify(jsonData));
+
+                $.ajax({
+                    type: "POST",
+                    url: "mem_login1_api.php",
+                    dataType: "json",
+                    data: JSON.stringify(jsonData),
+                    success: showdata_login,
+                    error: function () {
+                        alert("error:mem_login1_api.php");
+                    }
+                });
+            });
+
+
+            //註冊監聽
+
+            $("#reg_btn").bind("click", function () {
+                console.log("reg_btn_ok");
+                //確認check01有沒有勾
+                if (flag_check01) {
+                    if (flag_check01 && flag_username && flag_password && flag_repassword && flag_email && flag_tel) {
+
+                        //規格:{"username":"owner", "password":"123456", "email":"xxx@ccc.xom"}
+
+                        var jsonData = {};
+                        jsonData["username"] = $("#reg_username").val();
+                        jsonData["password"] = $("#reg_password").val();
+                        jsonData["email"] = $("#email").val();
+                        console.log(JSON.stringify(jsonData));
+                        $.ajax({
+                            type: "POST",
+                            url: "mem_reg1_api.php",
+                            dataType: "json",
+                            data: JSON.stringify(jsonData),
+                            success: showdata_reg,
+                            error: function () {
+                                alert("error:mem_reg1_api.php");
+                            }
+                        });
+                    } else {
+                        alert("欄位不符規定，請修正");
+                    }
+                } else {
+                    alert("請勾選遵守會員守則");
+                }
+            });
+
+            //帳號填入內容即時監聽
+            $("#reg_username").bind("input propertychange", function () {
+                if ($(this).val().length > 0 && $(this).val().length < 9) {
+                    //符合規則
+                    var jsonData = {};
+                    jsonData["username"] = $(this).val();
+                    console.log(JSON.stringify(jsonData));
+                    $.ajax({
+                        type: "POST",
+                        url: "mem_reg1_check_one_api.php",
+                        dataType: "json",
+                        data: JSON.stringify(jsonData),
+                        success: showdata_check_one,
+                        error: function () {
+                            alert("error:mem_reg1_check_one_api.php")
+                        }
+                    });
+                    // $("#err_reg_username").html("字數符合規則!");
+                    // $("#err_reg_username").css("color", "green");
+                    $("#reg_valid-feedback").text("帳號輸入正確");
+                    $("#reg_username").removeClass("is-invalid");
+                    $("#reg_username").addClass("is-valid");
+                    flag_username = true;
+                } else {
+                    // $("#err_reg_username").html("字數不符合規則!");
+                    // $("#err_reg_username").css("color", "red");
+                    $("#reg_invalid-feedback").text("帳號輸入錯誤");
+                    $("#reg_username").removeClass("is-valid");
+                    $("#reg_username").addClass("is-invalid");
+                    flag_username = false;
+                }
+            });
+
+            //密碼即時監聽
+            $("#reg_password").bind("input propertychange", function () {
+                console.log("OK_reg_password");
+                if ($(this).val().length > 0 && $(this).val().length < 9) {
+                    //符合規則
+                    // $("#err_reg_password").html("字數符合規則!");
+                    // $("#err_reg_password").css("color", "green");
+                    $("#reg_password").removeClass("is-invalid");
+                    $("#reg_password").addClass("is-valid");
+                    flag_password = true;
+                } else {
+                    //不符合規則
+                    // $("#err_reg_password").html("字數不符合規則!");
+                    // $("#err_reg_password").css("color", "red");
+                    $("#reg_password").removeClass("is-valid");
+                    $("#reg_password").addClass("is-invalid");
+                    flag_password = false;
+                }
+            });
+            //確認密碼即時監聽
+            $("#reg_re_password").bind("input propertychange", function () {
+                console.log("OK_reg_re_password");
+                if ($(this).val() == $("#reg_password").val()) {
+                    //密碼一致
+                    // $("#err_reg_re_password").html("密碼一致");
+                    // $("#err_reg_re_password").css("color", "green");
+                    $("#reg_re_password").removeClass("is-invalid");
+                    $("#reg_re_password").addClass("is-valid");
+                    flag_repassword = true;
+                } else {
+                    // $("#err_reg_re_password").html("密碼不一致");
+                    // $("#err_reg_re_password").css("color", "red");
+                    $("#reg_re_password").removeClass("is-valid");
+                    $("#reg_re_password").addClass("is-invalid");
+                    flag_repassword = false;
+                }
+            });
+            //監聽會員守則勾選
+            $("#mem_check01").bind("input propertychange", function () {
+                var check01 = [];
+                $.each($("input[name='mem_check01']:checked"), function () {
+                    check01.push($(this).val());
+                    //每個叫mem_check01都被checked的話，執行
+                });
+                console.log(check01);
+                if (check01.length == 1) { //因只有2個結果true跟false因此若長度=1則代表有被勾選
+                    console.log("遵守");
+                    flag_check01 = true;
+                } else {
+                    console.log("未遵守");
+                    flag_check01 = false;
+                }
+            });
+
+            //監聽EMAIL填入內容
+            $("#email").bind("input propertychange", function () {
+                if ($(this).val().length > 0 && $(this).val().length < 20) {
+
+                    // $("#err_email").html("字數符合規則!");
+                    // $("#err_email").css("color", "green");
+                    $("#email").removeClass("is-invalid");
+                    $("#email").addClass("is-valid");
+                    flag_email = true;
+                } else {
+                    // $("#err_email").html("字數不符合規則!");
+                    // $("#err_email").css("color", "red");
+                    $("#email").removeClass("is-valid");
+                    $("#email").addClass("is-invalid");
+                    flag_email = false;
+                }
+            });
+
+            //監聽tel填入內容
+            $("#tel").bind("input propertychange", function () {
+                if ($(this).val().length > 6 && $(this).val().length < 12) {
+
+                    // $("#err_tel").html("字數符合規則!");
+                    // $("#err_tel").css("color", "green");
+                    $("#tel").removeClass("is-invalid");
+                    $("#tel").addClass("is-valid");
+                    flag_tel = true;
+                } else {
+                    // $("#err_tel").html("字數不符合規則!");
+                    // $("#err_tel").css("color", "red");
+                    $("#tel").removeClass("is-valid");
+                    $("#tel").addClass("is-invalid");
+                    flag_tel = false;
+                }
+            });
+
+            //針對add_list按鈕做監聽
+            
+            $("#menu #add_list_btn").bind("click", function () {
+
+                console.log($(this).data("food_gb5"));
+                var jsonData = {}; //沒設{}的話會導致Uncaught TypeError
+                //jsonData["food_no"] = food_no; //調用共用變數 id
+                jsonData["food_no_amount"] = $("#food_no_amount").val();
+                jsonData["food_no"] = $(this).data("food_no");
+                jsonData["food_gb5"] = $(this).data("food_gb5");
+                jsonData["food_price"] = $(this).data("food_price");
+                jsonData["food_total"] = $(this).data("food_price")*$("#food_no_amount").val();
+
+                console.log(JSON.stringify(jsonData));
+
+                // food_no = $(this).data("food_no");
+                // food_gb5 = $(this).data("food_gb5");
+                // food_price = $(this).data("food_price");
+
+                // $("#food_gb5").val(food_gb5);
+                // $("#food_price").val(food_price);
+
+
+                // $("#show_mydata").append("<h3>"+$(this).data("food_no")+"</h3>")
+                // $("#show_mydata").append("<h3>"+$(this).data("food_gb5")+"</h3>")
+
+            });
+            
+
+        });
+        function showdata_reg(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "main.htm"
+            } else {
+                alert(data.message);
+            }
+        }
+
+
+
+        function showdata(data) {
+            console.log(data);
+            if (data.state) {
+                // alert(data.message);
+                $("#menu").empty();
+
+
+                for (var i = 0; i < data.data.length; i++) {
+                    var strHTML01;
+                    var strHTML02;
+
+                    if (data.data[i]["tag_promo"] == 1) {
+                        strHTML01 = '<i class="fa-regular fa-thumbs-up"></i>'
+                    } else {
+                        strHTML01 = ""
+
+                    }
+                    if (data.data[i]["tag_recmn"] == 1) {
+                        strHTML02 = '<i class="fa-solid fa-tags"></i>'
+                    } else {
+                        strHTML02 = ""
+                    }
+
+                    var strHTML = '<div class="card col-3 p-2 form-floating"><img src="' + data.data[i]["food_pic"] + ' "><div class="card-body"><p class=" fs-5">品名:  ' + data.data[i]["food_gb5"] + ' ' + strHTML01 + '' + strHTML02 + '</p><p class="fs-6">' + data.data[i]["food_eng"] + '</p><p class="card-text fs-3">特價:' + data.data[i]["food_price"] + '</p><label for="product001" class="mt-1">數量</label><input type="number" id="food_no_amount" class="form-control" placeholder="購買數量"><div class="form-text mb-3">' + data.data[i]["food_remark"] + '</div><div class="text-end mt-1"><a href="#" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#add_list" data-food_no="' + data.data[i]["food_no"] + '" data-food_gb5="' + data.data[i]["food_gb5"] + '" data-food_price="' + data.data[i]["food_price"] + '" id="add_list_btn">加到購物車</a></div></div><div class="card-footer"><small class="text-muted">' + data.data[i]["food_describe"] + '</small></div></div>';
+                    $("#menu").append(strHTML);                  
+
+                }
+                
+                $("#menu #add_list_btn").click(function (e) {
+                        var food_no = $(this).data("food_no");
+                        var food_gb5 = $(this).data("food_gb5");
+                        var food_price = $(this).data("food_price");
+                        var food_no_amount = $("#food_no_amount").val();
+                        var food_total =$(this).data("food_price")*$("#food_no_amount").val();
+
+
+                        //console.log( food_no +"\n"+ food_gb5);
+                        $("#show_mydata").empty();
+                        $("#show_mydata").append("商品編號:"+food_no+"<br> 商品名稱:"+food_gb5+"<br> 商品價格:"+food_price+"<br>購買數量: "+food_no_amount+"<br> 總價:"+food_total);
+                    });
+
+            } else {
+                alert(data.message);
+            }
+        }
+
+
+
+        function showdata_login(data) {
+            console.log(data);
+            if (data.state) {
+                //     alert(data.message);
+                //     location.href = "mem_control_panel.htm";
+                //(需求變更)$("#s2_backend_btn").show(); 
+                console.log(data.data);
+                console.log(data.data[0].UserState);
+                console.log(data.data[0].UID01);
+
+                //UID寫入cookie
+                setCookie("UID01", data.data[0].UID01, 7);
+                setCookie("UID02", data.data[0].UID02, 7);
+
+                //顯示會員帳號相關訊息格內容
+                $("#login_member").text(data.data[0].Username + "會員您好!");
+
+                //隱藏登入與註冊按鈕，秀logout按鈕
+
+                $("#s2_login_btn").hide();
+                $("#s2_reg_btn").hide();
+                $("#logout_btn").show();
+
+                //更換背景顏色
+                $("body").removeClass();
+                $("body").css("background-color", "#f1b978");
+
+                //顯示後台管理系統選單
+                $("#backend_btn").show();
+                $("#backend01_btn").show();
+                $("#backend02_btn").show();
+                $("#backend03_btn").show();
+                $("#backend04_btn").show();
+
+                if (data.data[0].UserState == "1") {
+                    //location.href = "mem_control_panel.htm";
+                    //(需求變更)$("#s2_backend_btn").show();
+
+                } else {
+                    alert("帳號已被停權!");
+                }
+            } else {
+                alert(data.message);
+            }
+        }
+
+        function showdata_check_one(data) {
+            console.log(data);
+
+            if (data.state) {
+                //帳號不存在可使用
+                $("#reg_valid-feedback").text("帳號不存在可使用");
+                $("#reg_username").removeClass("is-invalid");
+                $("#reg_username").addClass("is-valid");
+                flag_username = true;
+
+            } else {
+                //帳號存在不可使用
+                $("#reg_invalid-feedback").text("帳號已存在不可使用");
+                $("#reg_username").removeClass("is-valid");
+                $("#reg_username").addClass("is-invalid");
+                flag_username = false;
+            }
+        }
+
+        function showdata_uid_check(data) {
+
+            //改自showdata_login(data)...
+            console.log(data);
+
+            if (data.state) {
+
+                //UID驗證合法時
+
+                //顯示會員帳號相關訊息
+                $("#login_member").text(data.data[0].Username + "會員您好!");
+
+                //隱藏登入與註冊按鈕，秀logout按鈕
+                $("#s2_login_btn").hide();
+                $("#s2_reg_btn").hide();
+                $("#logout_btn").show();
+
+                //更換背景顏色
+                $("body").removeClass();
+                $("body").css("background-color", "#f1b978");
+
+                //顯示後台管理系統選單
+                $("#backend_btn").show();
+                $("#backend01_btn").show();
+                $("#backend02_btn").show();
+                $("#backend03_btn").show();
+                $("#backend04_btn").show();
+
+                if (data.data[0].UserState == "1") {
+                    //(需求變更)$("#s2_backend_btn").show();
+                } else {
+                    alert("帳號已被停權!");
+                }
+            }
+        }
+
+        //form w3c set_cookie  
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        //form w3c get_cookie
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>

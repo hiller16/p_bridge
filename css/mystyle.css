@@ -1,0 +1,123 @@
+:root{
+--mycolor00: #ffffff;
+--mycolor01: #fc0000;
+--mycolor02: #d15209;
+--mycolor03: #ebd408;
+--mycolor04: #11ad0c;
+--mycolor05: #12c6f3;
+--mycolor06: #154bfa;
+--mycolor07: #870bb8;
+--mycolor08: #362323;
+--mycolor09: #9c9b9b;
+--mycolor10: #c67e7e;
+--mycolor11: #342d2d;
+
+
+}
+.box0a {
+    height: 120px;
+    border: 3px solid var(--mycolor02);
+    background-color: var(--mycolor01);
+    line-height: 120px;
+    text-align: center;
+    font-size: 36px;
+    color: var(--mycolor03);
+}
+.box0b {
+    height: 150px;
+    border: 3px solid var(--mycolor02);
+    background-color: var(--mycolor04);
+    line-height: 150px;
+    text-align: center;
+    font-size: 36px;
+    color: var(--mycolor03);
+}
+.box0c{
+background-color: var(--mycolor06);
+border-radius: 8px;
+border: 1px solid var(--mycolor03);
+
+}
+
+.box0c:hover{
+    background-color: var(--mycolor05);
+    border: 3px solid var(--mycolor03);
+    
+}
+
+
+.box0d {
+    height: 200px;
+    border: 3px solid var(--mycolor02);
+    background-color: var(--mycolor01);
+    text-align: center;
+    border-radius: 8px;
+    color: var(--mycolor03);
+}
+.box0d:hover{
+    border:10px solid var(--mycolor01)
+}
+.mybtn{
+    display: block;
+    border: 3px solid var(--mycolor03);
+    text-align:center;
+    text-decoration:none;
+    border-radius: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--mycolor02);
+    color: var(--mycolor00)
+}
+.bg-cover{
+    background-size: cover;
+    background-position: center center;
+    
+}
+
+.demo{
+    margin: 10px;
+    padding: 10px;
+    background-color: var(--mycolor09);
+    border:2px solid var(--mycolor08);
+    color:var(--mycolor08)
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+body{
+     font-family: Noto+Sans+TC;
+}
+
+.mytext01{
+    font-weight: 100;
+}
+.mytext02{
+    font-weight: 300;
+}
+.mytext03{
+    font-weight: 400;
+}
+.mytext04{
+    font-weight: 500;
+}
+.mytext05{
+    font-weight: 700;
+}
+.mytext06{
+    font-weight: 900;
+}
+
+.round{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 1px solid var(--mycolor10);
+    text-align: center;
+    line-height: 150px;
+    background-color: var(--mycolor01);
+}
+.round:hover{
+    background-color: var(--mycolor04);
+    color: var(--mycolor04);
+
+}
